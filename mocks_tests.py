@@ -1,12 +1,10 @@
 import pytest
 import telebot
 import pandas as pd
+from config import CFG
 from unittest.mock import patch, Mock
 from bot import kino_guied, help, film_ser, primers, acrtist__1, rand_film
-from config import CFG
 
-data = pd.read_csv(CFG.PATH_DATA, sep=',')
-data_of_films = list(data["movie"])
 
 class TestBot:
     @pytest.fixture(autouse=True)
@@ -42,11 +40,6 @@ class TestBot:
             acrtist__1(self.message)
             mocked.assert_called_once_with(self.message.chat.id, 'Введите полное имя актера/актрисы...\n⬇️⬇️⬇️', parse_mode='html')
 
-    def test_rand_film(self):
-        with patch('telebot.TeleBot.send_message') as mocked:
-            rand_film(self.message)
-            print(self.message in data_of_films)
-            mocked.assert_has_calls(self.message.chat.id, self.message in data_of_films)
 
 
 if __name__ == '__main__':

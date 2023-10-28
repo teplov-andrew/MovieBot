@@ -114,14 +114,14 @@ def acrtist__1(message):
 #                                                         РАСПОЗНОВАНИЕ ФИЛЬМОВ
 
 @client.message_handler(content_types=["text"])
-def start(message):
+def search_films(message):
 	found = False
 	kino = Kinopoisk(CFG.KINOPOIS_API_KEY)
 	film = kino.search(message.text)
 
 	if film and film['count']:
 		found = True
-		client.send_message(message.chat.id, 'Выполняется поиск...')
+		# client.send_message(message.chat.id, 'Выполняется поиск...')
 		client.send_message(message.chat.id,
 							f"●  Название: [{film['name']}]({film['photo']})\n●  Год: {film['year']}\n●  Страна: {', '.join(film['country'])}\n●  Рейтинг: {film['rating']}\n●  Режиссер: {film['director']}\n●  Актеры: {', '.join(film['actors'])}\n●  Описание: {film['description']}\n●  Кинопоиск: {film['link']}",
 							parse_mode='Markdown')

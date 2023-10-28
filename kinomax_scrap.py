@@ -21,7 +21,6 @@ def cinema_primers_data(link):
     return data_of_films
 
 data = cinema_primers_data(CFG.kinomax_link)
-print(data)
 f = open("primers_data.txt", "w", encoding="utf8")
 f.write(data)
 f.close()

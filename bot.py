@@ -139,7 +139,6 @@ def search_films(message):
 			message.chat.id, "Я не понял ваш запрос! Попробуйте написать название фильма на английском")
 
 
-print('start')
 
 if __name__ == '__main__':
     client.polling(none_stop=True)

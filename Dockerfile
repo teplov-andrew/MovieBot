@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 # Define the entry point for the container
 CMD ["python", "bot.py"]
 
-#EXPOSE 80/tcp
+EXPOSE 8080/tcp

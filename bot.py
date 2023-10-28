@@ -10,6 +10,9 @@ from kinopoisk_api import Kinopoisk
 from kinomax_scrap import cinema_primers_data
 from help_functions import clear_msg, clean_link
 
+from http.server import BaseHTTPRequestHandler
+from http.server import HTTPServer
+
 
 data = pd.read_csv(CFG.PATH_DATA, sep=',')
 primers_data = open(CFG.PRIMERS_DATA, "r", encoding="utf8").read()
@@ -138,6 +141,26 @@ def search_films(message):
 		client.send_message(
 			message.chat.id, "Я не понял ваш запрос! Попробуйте написать название фильма на английском")
 
+
+# print('start')
+
+## REST API 
+class HttpGetHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write('MovieBot v1.0.0'.encode())
+
+def run_rest_server(server_class=HTTPServer, handler_class=HttpGetHandler):
+  server_address = ('', 8080)
+  httpd = server_class(server_address, handler_class)
+  print("Run server 8080 port")
+  try:
+      httpd.serve_forever()
+  except KeyboardInterrupt:
+      httpd.server_close()
+
+run_rest_server()
 
 
 if __name__ == '__main__':

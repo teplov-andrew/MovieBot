@@ -98,7 +98,7 @@ class Kinopoisk:
         url['params'] = {'order': 'RATING', 'type': 'ALL', 'ratingFrom': '0',
                          'ratingTo': '10', 'yearFrom': '1000', 'yearTo': '3000', 'keyword': film_name}
         result = self._request(url)
-        print(result)
+        #print(result)
         return len(result['items'])
 
     def get_staff(self, film_id):

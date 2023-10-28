@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 # Define the entry point for the container
 CMD ["python", "bot.py"]
 
-EXPOSE 443/tcp
+EXPOSE 5222/tcp

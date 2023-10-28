@@ -9,4 +9,4 @@ class CFG:
 
     kinomax_link = "https://kinomax.ru/"
 
-    PRIMERS_DATA = "primers_data.txt"
+    PRIMERS_DATA = "primers_data.txt" 

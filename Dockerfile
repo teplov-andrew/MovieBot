@@ -5,10 +5,12 @@ FROM python:3.10.11
 WORKDIR /
 
 # Copy the application files into the working directory
-COPY . /
+COPY . .
 
 # Install the application dependencies
 RUN pip install -r requirements.txt
 
 # Define the entry point for the container
-CMD ["python", "bot.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "bot.py"]
+
+EXPOSE 80/tcp
